@@ -14,8 +14,7 @@ func main() {
 	router := chi.NewRouter()
 	router.Use(middleware.Logger)
 
-	router.Get("/player", user.List )
-	router.Get("/player/{id}", user.Get )
+	router.Route("/player", user.PlayerRoutes)
 
 	http.ListenAndServe(":3000", router)
 }
