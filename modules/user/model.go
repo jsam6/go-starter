@@ -1,14 +1,14 @@
 package user
 
 import (
-	"gorm.io/gorm"
 	"github.com/jsam6/go-orders-api/config"
+	"gorm.io/gorm"
 )
 
 type User struct {
 	gorm.Model
-	Name  string `json:"name"`
-	Email string `json:"email"`
+	Name  string
+	Email string
 }
 
 var db *gorm.DB
@@ -22,4 +22,10 @@ func GetAllUsers() []User {
 	var Users []User
 	db.Find(&Users)
 	return Users
+}
+
+func GetUserById(id string) (*User, *gorm.DB) {
+	var getMember User
+	db := db.Where("id=?", id).Find(&getMember)
+	return &getMember, db
 }

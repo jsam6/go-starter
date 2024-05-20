@@ -15,6 +15,7 @@ func main() {
 	router.Use(middleware.Logger)
 
 	router.Get("/player", user.List )
+	router.Get("/player/{id}", user.Get )
 
 	http.ListenAndServe(":3000", router)
 }
