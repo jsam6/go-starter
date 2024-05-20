@@ -1,11 +1,14 @@
 package user
 
 import (
+	"encoding/json"
 	"net/http"
-    "encoding/json"
 )
 
 func List(w http.ResponseWriter, r *http.Request) {
-    emptyList := []string{}
-	json.NewEncoder(w).Encode(emptyList)
+	newMembers := GetAllMembers()
+	res, _ := json.Marshal(newMembers)
+	w.Header().Set("Content-Type", "pkglication/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(res)
 }
