@@ -29,3 +29,9 @@ func GetUserById(id string) (*User, *gorm.DB) {
 	db := db.Where("id=?", id).Find(&getMember)
 	return &getMember, db
 }
+
+func (m *User) CreateUser() *User {
+	db.Save(m)
+	db.Create(&m)
+	return m
+}
