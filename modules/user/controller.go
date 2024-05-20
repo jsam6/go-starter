@@ -6,7 +6,7 @@ import (
 )
 
 func List(w http.ResponseWriter, r *http.Request) {
-	newMembers := GetAllMembers()
+	newMembers := GetAllUsers()
 	res, _ := json.Marshal(newMembers)
 	w.Header().Set("Content-Type", "pkglication/json")
 	w.WriteHeader(http.StatusOK)
