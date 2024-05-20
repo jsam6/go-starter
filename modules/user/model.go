@@ -18,8 +18,8 @@ func init() {
 	db.AutoMigrate(&User{})
 }
 
-func GetAllMembers() []User {
-	var Members []User
-	db.Find(&Members)
-	return Members
+func GetAllUsers() []User {
+	var Users []User
+	db.Find(&Users)
+	return Users
 }
